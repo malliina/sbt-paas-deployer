@@ -7,5 +7,5 @@ Existing support:
     + af:update
 
 - CloudFoundry
-+ cf:push
-+ cf:update
+    + cf:push
+    + cf:update
