@@ -13,7 +13,7 @@ object CloudFoundryPlugin extends CloudFoundryBasedPlugin {
     cmdLineTool in CloudFoundry := Paths.get( """C:\Program Files (x86)\ruby-1.9.2\bin\vmc.bat"""),
     url in CloudFoundry <<= (appName in CloudFoundry)(n => n + ".cloudfoundry.com"),
     runtime in CloudFoundry := Java7Runtime,
-    pushOptions in CloudFoundry <<= (url in CloudFoundry, instances, memoryMb in CloudFoundry, framework, runtime in CloudFoundry)(
+    pushOptions in CloudFoundry <<= (url in CloudFoundry, instances in CloudFoundry, memoryMb in CloudFoundry, framework in CloudFoundry, runtime in CloudFoundry)(
       (u, inst, mem, f, r) => {
         val params = Map(
           "--url" -> u,
