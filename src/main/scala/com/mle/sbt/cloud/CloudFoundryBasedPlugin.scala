@@ -23,14 +23,8 @@ trait CloudFoundryBasedPlugin {
   def toCommand(afPath: Path, command: String, app: String, appPackage: Path) =
     Seq(afPath.toAbsolutePath.toString, command, app, "--path", appPackage.toAbsolutePath.toString)
 
-  def execute(cmd: Seq[String], logger: TaskStreams) {
-    logger.log.info(cmd.mkString(" "))
-    val output = Process(cmd.head, cmd.tail).lines
-    output.foreach(line => logger.log.info(line))
-  }
-
   def executeDeploy(cmd: Seq[String], url: String, logger: TaskStreams) = {
-    execute(cmd, logger)
+    ExeUtils.execute(cmd, logger)
     logger.log.info("Now try: " + url)
     url
   }

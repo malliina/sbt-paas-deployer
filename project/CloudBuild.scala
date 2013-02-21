@@ -12,7 +12,7 @@ object CloudBuild extends Build {
     scalaVersion := "2.9.2",
     organization := "com.github.malliina",
     name := "sbt-paas-deployer",
-    version := "0.100-SNAPSHOT",
+    version := "0.101-SNAPSHOT",
     sbtPlugin := true,
     exportJars := false,
     resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
