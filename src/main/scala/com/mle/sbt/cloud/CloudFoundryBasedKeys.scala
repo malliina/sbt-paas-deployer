@@ -16,14 +16,12 @@ trait CloudFoundryBasedKeys {
   // specific to tool (af/vmc)
   val framework = SettingKey[AppFramework]("framework", "app framework")
   val cmdLineTool = SettingKey[Path]("executable", "path to af.bat (AppFog) or vmc.bat (CloudFoundry)")
-  val url = SettingKey[String]("url", "url to the app when deployed")
+  val deployUrl = SettingKey[String]("url", "url to the app when deployed")
   val pushOptions = SettingKey[Seq[String]]("params", "parameters to executable, excluding command and app name")
   val updateCommand = TaskKey[Seq[String]]("update-command", "the command used to update the app")
   val printUpdate = TaskKey[Unit]("update-print", "prints the update command parameters")
-  val cfUpdate = TaskKey[String]("cf-update", "deploys the updated version of the app")
   val pushCommand = TaskKey[Seq[String]]("push-command", "the command used to push the app")
   val printPush = TaskKey[Unit]("push-print", "prints the update command parameters")
-  val cfPush = TaskKey[String]("push", "deploys the updated version of the app")
 }
 
 object CloudFoundryBasedKeys extends CloudFoundryBasedKeys

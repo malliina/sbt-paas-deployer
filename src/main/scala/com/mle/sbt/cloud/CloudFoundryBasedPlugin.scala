@@ -23,10 +23,9 @@ trait CloudFoundryBasedPlugin {
   def toCommand(afPath: Path, command: String, app: String, appPackage: Path) =
     Seq(afPath.toAbsolutePath.toString, command, app, "--path", appPackage.toAbsolutePath.toString)
 
-  def executeDeploy(cmd: Seq[String], url: String, logger: TaskStreams) = {
+  def executeDeploy(cmd: Seq[String], url: String, logger: TaskStreams) {
     ExeUtils.execute(cmd, logger)
     logger.log.info("Now try: " + url)
-    url
   }
 
   def logIt(cmd: Seq[String], logger: TaskStreams) {
