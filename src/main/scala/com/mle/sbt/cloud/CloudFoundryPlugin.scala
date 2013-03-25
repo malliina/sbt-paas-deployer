@@ -13,7 +13,7 @@ import PaasKeys._
 object CloudFoundryPlugin extends CloudFoundryBasedPlugin {
   val settings: Seq[Project.Setting[_]] = cfBasedSettings ++ inConfig(CloudFoundry)(Seq(
     cmdLineTool := Paths.get( """C:\Program Files (x86)\ruby-1.9.2\bin\vmc.bat"""),
-    deployUrl <<= (appName)(n => n + ".cloudfoundry.com"),
+    deployUrl <<= (name)(n => n + ".cloudfoundry.com"),
     runtime := Java7Runtime,
     pushOptions <<= (deployUrl, instances, memoryMb, framework, runtime)(
       (u, inst, mem, f, r) => {
@@ -27,18 +27,19 @@ object CloudFoundryPlugin extends CloudFoundryBasedPlugin {
         params.map(kv => Seq(kv._1, kv._2)).flatten.toSeq ++
           Seq("--start", "--restart", "--no-create-services", "--no-bind-services")
       }),
-    pushCommand <<= (cmdLineTool, appName, packagedApp, pushOptions) map (
+    pushCommand <<= (cmdLineTool, name, packagedApp, pushOptions) map (
       (cmdPath, app, appPackage, params) => {
         toCommand(cmdPath, "push", app, appPackage) ++ params
       }),
     paasPush <<= (pushCommand, deployUrl, streams) map (executeDeploy),
-    updateCommand <<= (cmdLineTool, appName, packagedApp) map (
+    updateCommand <<= (cmdLineTool, name, packagedApp) map (
       (cmdPath, app, appPackage) => {
-        // "update" is deprectated, "push" updates if the app already exists
+        // "update" is deprecated, "push" updates if the app already exists
         toCommand(cmdPath, "push", app, appPackage)
       }),
     paasUpdate <<= (updateCommand, deployUrl, streams) map (executeDeploy),
     printUpdate <<= (updateCommand, streams) map (logIt),
-    printPush <<= (pushCommand, streams) map (logIt)
+    printPush <<= (pushCommand, streams) map (logIt),
+    login <<= (cmdLineTool, streams) map (executeLogin)
   ))
 }

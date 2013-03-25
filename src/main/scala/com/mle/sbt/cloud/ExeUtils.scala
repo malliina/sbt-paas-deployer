@@ -19,6 +19,13 @@ object ExeUtils {
     output.foreach(line => logger.log.info(line))
   }
 
+  /**
+   * Executes the supplied command, logging only the command executed.
+   *
+   * @param cmd
+   * @param logger
+   * @return all output lines up to termination
+   */
   def execute2(cmd: Seq[String], logger: TaskStreams) = {
     logger.log.info(cmd.mkString(" "))
     Process(cmd.head, cmd.tail).lines

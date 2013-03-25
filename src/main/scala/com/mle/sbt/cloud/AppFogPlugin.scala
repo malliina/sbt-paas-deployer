@@ -13,7 +13,7 @@ object AppFogPlugin extends CloudFoundryBasedPlugin {
   val settings: Seq[Project.Setting[_]] = cfBasedSettings ++ inConfig(AppFog)(Seq(
     cmdLineTool := Paths.get( """C:\Program Files (x86)\ruby-1.9.2\bin\af.bat"""),
     infra := EuAws,
-    deployUrl <<= (appName, infra)((n, i) => n + i.urlSuffix),
+    deployUrl <<= (name, infra)((n, i) => n + i.urlSuffix),
     runtime := JavaRuntime,
     pushOptions <<= (deployUrl, instances, memoryMb, infra, runtime)(
       (u, inst, mem, inf, r) => {
@@ -26,15 +26,16 @@ object AppFogPlugin extends CloudFoundryBasedPlugin {
         )
         params.map(kv => Seq(kv._1, kv._2)).flatten.toSeq ++ Seq("--non-interactive")
       }),
-    pushCommand <<= (cmdLineTool, appName, packagedApp, pushOptions) map ((cmdPath, app, appPackage, params) => {
+    pushCommand <<= (cmdLineTool, name, packagedApp, pushOptions) map ((cmdPath, app, appPackage, params) => {
       toCommand(cmdPath, "push", app, appPackage) ++ params
     }),
     paasPush <<= (pushCommand, deployUrl, streams) map (executeDeploy),
-    updateCommand <<= (cmdLineTool, appName, packagedApp) map ((cmdPath, app, appPackage) => {
+    updateCommand <<= (cmdLineTool, name, packagedApp) map ((cmdPath, app, appPackage) => {
       toCommand(cmdPath, "update", app, appPackage)
     }),
     paasUpdate <<= (updateCommand, deployUrl, streams) map (executeDeploy),
-    printUpdate <<= (updateCommand, streams) map (logIt),
-    printPush <<= (pushCommand, streams) map (logIt)
+    printUpdate <<= (updateCommand, streams) map logIt,
+    printPush <<= (pushCommand, streams) map logIt,
+    login <<= (cmdLineTool, streams) map executeLogin
   ))
 }
