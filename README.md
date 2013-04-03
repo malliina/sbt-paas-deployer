@@ -2,6 +2,10 @@
 
 This SBT plugin deploys apps to Platform as a Service (PaaS) providers.
 
+## Installation ##
+
+    addSbtPlugin("com.github.malliina" %% "sbt-paas-deployer" % "0.102")
+
 ## Usage ##
 
 Use the following two keys to deploy the app to your favorite PaaS provider:
@@ -26,9 +30,11 @@ Cloudbees has its own SBT plugin. Use it.
 The command line tools of the respective PaaS providers need to be installed as a prerequisite.
 
 ## Known issues ##
+
 - Before pushing to AppFog/CloudFoundry, login using the command line tools (af login / vmc login)
 
 ## Help ##
+
 After a git clone of a heroku app, execute:
 
     git remote add heroku git@heroku.com:{heroku-app-name}.git
