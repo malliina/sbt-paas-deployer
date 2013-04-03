@@ -4,7 +4,8 @@ This SBT plugin deploys apps to Platform as a Service (PaaS) providers.
 
 ## Usage ##
 
-Use the following two keys to deploy the app to your favorite PaaS provider
+Use the following two keys to deploy the app to your favorite PaaS provider:
+
     provider_name:paas-push
     provider_name:paas-update
 
