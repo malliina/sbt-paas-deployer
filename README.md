@@ -9,7 +9,9 @@ Use the following two keys to deploy the app to your favorite PaaS provider:
     provider_name:paas-push
     provider_name:paas-update
 
-Example: af:paas-push
+Example:
+
+    af:paas-push
 
 ## Existing support ##
 
@@ -27,5 +29,6 @@ The command line tools of the respective PaaS providers need to be installed as 
 - Before pushing to AppFog/CloudFoundry, login using the command line tools (af login / vmc login)
 
 ## Help ##
-- After a git clone of a heroku app, execute:
+After a git clone of a heroku app, execute:
+
     git remote add heroku git@heroku.com:{heroku-app-name}.git
