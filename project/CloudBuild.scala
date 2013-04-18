@@ -15,7 +15,7 @@ object CloudBuild extends Build {
     version := "0.102",
     sbtPlugin := true,
     exportJars := false,
-    resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
+    resolvers += "Sonatype snaps" at "http://oss.sonatype.org/content/repositories/snapshots/",
     publishTo <<= (version)(v => {
       val repo =
         if (v endsWith "SNAPSHOT") {
