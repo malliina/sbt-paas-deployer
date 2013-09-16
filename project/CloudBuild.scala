@@ -35,6 +35,7 @@ object CloudBuild extends Build {
   )
 
   def extraPom = (
+      <url>https://github.com/malliina/sbt-paas-deployer</url>
       <developers>
         <developer>
           <id>malliina</id>

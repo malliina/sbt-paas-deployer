@@ -4,7 +4,7 @@ This SBT plugin deploys apps to Platform as a Service (PaaS) providers.
 
 ## Installation ##
 
-    addSbtPlugin("com.github.malliina" %% "sbt-paas-deployer" % "0.102")
+    addSbtPlugin("com.github.malliina" %% "sbt-paas-deployer" % "1.0.0")
 
 ## Usage ##
 
