@@ -3,7 +3,7 @@ package com.mle.sbt.cloud
 /**
  * @author Michael
  */
-case class Infra(name: String, urlSuffix: String)
+abstract class Infra(val name: String, val urlSuffix: String)
 
 case object EuAws extends Infra("eu-aws", ".eu01.aws.af.cm")
 

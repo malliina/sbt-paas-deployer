@@ -5,14 +5,14 @@ object CloudBuild extends Build {
   lazy val cloudDeploy = Project("sbt-paas-deployer", file("."))
     .settings(libraryDependencies ++= Seq(utilDep, scalaTest))
 
-  val utilDep = "com.github.malliina" %% "util" % "0.7.0"
+  val utilDep = "com.github.malliina" %% "util" % "1.0.0"
   val scalaTest = "org.scalatest" %% "scalatest" % "1.9.1" % "test"
 
   override lazy val settings = super.settings ++ Seq(
-    scalaVersion := "2.9.2",
+    scalaVersion := "2.10.2",
     organization := "com.github.malliina",
     name := "sbt-paas-deployer",
-    version := "0.102",
+    version := "1.0.0",
     sbtPlugin := true,
     exportJars := false,
     resolvers += "Sonatype snaps" at "http://oss.sonatype.org/content/repositories/snapshots/",
@@ -25,6 +25,8 @@ object CloudBuild extends Build {
         }
       Some(repo)
     }),
+    licenses += ("BSD-style" -> url("http://www.opensource.org/licenses/BSD-3-Clause")),
+    scmInfo := Some(ScmInfo(url("https://github.com/malliina/sbt-paas-deployer"), "git@github.com:malliina/sbt-paas-deployer.git")),
     credentials += Credentials(Path.userHome / ".ivy2" / "sonatype.txt"),
     publishMavenStyle := true,
     publishArtifact in Test := false,
@@ -33,18 +35,6 @@ object CloudBuild extends Build {
   )
 
   def extraPom = (
-    <url>https://github.com/malliina/sbt-paas-deployer</url>
-      <licenses>
-        <license>
-          <name>BSD-style</name>
-          <url>http://www.opensource.org/licenses/BSD-3-Clause</url>
-          <distribution>repo</distribution>
-        </license>
-      </licenses>
-      <scm>
-        <url>git@github.com:malliina/sbt-paas-deployer.git</url>
-        <connection>scm:git:git@github.com:malliina/sbt-paas-deployer.git</connection>
-      </scm>
       <developers>
         <developer>
           <id>malliina</id>

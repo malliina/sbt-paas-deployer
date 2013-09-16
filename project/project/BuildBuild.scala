@@ -3,9 +3,9 @@ import sbt._
 
 object BuildBuild extends Build {
   override lazy val settings = super.settings ++ Seq(
-    scalaVersion := "2.9.2",
+    scalaVersion := "2.10.2",
     resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
-    addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.2.0"),
+    addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.1"),
     addSbtPlugin("com.typesafe.sbt" % "sbt-pgp" % "0.8")
   )
   override lazy val projects = Seq(root)

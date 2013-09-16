@@ -3,7 +3,7 @@ package com.mle.sbt.cloud
 /**
  * @author Michael
  */
-case class AppRuntime(name: String)
+abstract class AppRuntime(val name: String)
 
 case object Java7Runtime extends AppRuntime("java7")
 
