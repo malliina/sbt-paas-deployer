@@ -6,7 +6,7 @@ object CloudBuild extends Build {
     .settings(libraryDependencies ++= Seq(utilDep, scalaTest))
 
   val utilDep = "com.github.malliina" %% "util" % "1.0.0"
-  val scalaTest = "org.scalatest" %% "scalatest" % "1.9.1" % "test"
+  val scalaTest = "org.scalatest" %% "scalatest" % "1.9.2" % "test"
 
   override lazy val settings = super.settings ++ Seq(
     scalaVersion := "2.10.2",
