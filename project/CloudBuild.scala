@@ -6,13 +6,13 @@ object CloudBuild extends Build {
     .settings(libraryDependencies ++= Seq(utilDep, scalaTest))
 
   val utilDep = "com.github.malliina" %% "util" % "1.0.0"
-  val scalaTest = "org.scalatest" %% "scalatest" % "1.9.2" % "test"
+  val scalaTest = "org.scalatest" %% "scalatest" % "2.1.3" % "test"
 
   override lazy val settings = super.settings ++ Seq(
-    scalaVersion := "2.10.2",
+    scalaVersion := "2.10.4",
     organization := "com.github.malliina",
     name := "sbt-paas-deployer",
-    version := "1.0.0",
+    version := "1.0.1",
     sbtPlugin := true,
     exportJars := false,
     resolvers += "Sonatype snaps" at "http://oss.sonatype.org/content/repositories/snapshots/",
